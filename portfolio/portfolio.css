@@ -6,17 +6,23 @@ body {
 .bodyContent {
   background-color: white;
   width: 55%;
-  height: 95vh;
+  height: 75vh;
   margin:auto;
   margin-top: 1.25%;
   font-family: 'Montserrat', sans-serif;
   border: 2px solid black;
-  overflow: scroll;
+  overflow: hidden;
 }
 
-.bodyContent p {
-  padding-left: 3%;
-  padding-right: 3%
+.bodyContentClicked {
+  background-color: white;
+  width: 55%;
+  height: 100vh;
+  margin:auto;
+  margin-top: 1.25%;
+  font-family: 'Montserrat', sans-serif;
+  border: 2px solid black;
+  overflow: auto;
 }
 
 h1 {
@@ -24,8 +30,38 @@ h1 {
   padding-top: 1%
 }
 
-.bodyContent img {
+.photoArea {
   margin: auto;
   margin-left: 13.5%;
+}
+
+#portfolioPhoto {
   border: 2px solid black;
+  width: 40vw;
+}
+
+#portfolioPhotoHover {
+  border: 2px solid black;
+  width: 45vw;
+  margin-left: -12%
+}
+
+.underPhotoButtons {
+  /* width: 25%; */
+  margin-left: 28%
+}
+
+.underPhotoButtons button {
+  width: 20%;
+  margin: auto;
+}
+
+.photoDiv {
+  width: 45%;
+}
+
+.aboutText {
+  padding-left: 3%;
+  padding-right: 3%;
+  text-align:justify;
 }
