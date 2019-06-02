@@ -1,8 +1,10 @@
 import json
 
 # Creates the dictionary to store responses.
-answers = {}
 leave = {"status": False}
+survey_json = open("./survey_data.json", "r+")
+all_answers = json.load(survey_json)
+survey_json.close()
 
 '''
 Below, write code that will pose the survey questions from the student prompt
@@ -19,6 +21,9 @@ def survey_loop():
         choice_path(choice)
 
     else:
+        with open("./survey_data.json", "w") as f:
+                json.dump(all_answers, f)
+
         print("Bye! See ya next time!\n")
 
 # Print the context of the dictionary.
@@ -40,7 +45,7 @@ def take_survey():
     artist = input("\nWho is it by: ")
     tv = input("\nWhat's a tv show you could always binge: ")
     dream_job = input("\nIf you could have any job, what would it be: ")
-    survey_answers = {
+    answers = {
         "name": name,
         "birthday": birthday,
         "song": song,
@@ -48,7 +53,8 @@ def take_survey():
         "tv": tv,
         "dream_job": dream_job
     }
-    save_json(survey_answers)
+
+    all_answers.append(answers)
 
 def display_answers_path():
     print("Would you like to display your answers or see all answers: ")
@@ -63,25 +69,22 @@ def display_answers_path():
 
 def find_my_answers():
     name = input("What is your full name: ")
-    for dic in answers_list:
+    for dic in all_answers:
             if dic["name"].lower() == name:
                 display_my_answers(dic)
 
 def display_my_answers(user):
     print("\nYour name is {name}".format(name=user["name"]))
+    print("\nYour birthday is {dte}".format(dte=user["birthday"]))
     print("\nYou're jamming to {title} by {artist}".format(title=user["song"], artist=user["artist"]))
     print("\nYou can always binge {show}".format(show=user["tv"]))
     print("\nIf you could be anything, you'd be a {job}".format(job=user["dream_job"]))
 
 def display_all_answers():
-    all_info = open("./survey_data.json", "r")
-    for dic in all_info:
+    jsonFile = open("./survey_data.json", "r")
+    all_info = json.load(jsonFile)
+    for dic in all_answers:
         print("\n{name} said:".format(name=dic["name"]))
         display_my_answers(dic)
-
-def save_json(info):
-    survey_json = open("./survey_data.json", "w")
-    json.dumps(info, survey_json)
-
 
 survey_loop()
