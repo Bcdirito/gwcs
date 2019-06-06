@@ -16,27 +16,51 @@ tweet_data = json.load(tweetFile)
 tweetFile.close()
 
 # Continue your program below!
-polarity_list = []
-subjectivity_list = []
-polarity_total = 0
-subjectivity_total = 0
-tweets_string = ""
+# Part One & Two:
+# polarity_list = []
+# subjectivity_list = []
 
+# Part One:
+# polarity_total = 0
+# subjectivity_total = 0
+
+# Part Three:
+# tweets_string = ""
+
+pos_tweets = ""
+neg_tweets = ""
+neut_tweets = ""
 for twt in tweet_data:
-    tweets_string += twt["text"]
 
-    twt_tb = TextBlob(twt["text"])
-    polarity_list.append(twt_tb.sentiment.polarity)
-    polarity_total += twt_tb.sentiment.polarity
-    subjectivity_list.append(twt_tb.sentiment.subjectivity)
-    subjectivity_total += twt_tb.sentiment.subjectivity
+    # Part Three:
+    # tweets_string += twt["text"]
 
-polarity_avg = polarity_total/len(polarity_list)
-subjectivity_avg = subjectivity_total/len(subjectivity_list)
+    # Parts One, Two, & Three:
+    # twt_tb = TextBlob(twt["text"])
 
-print("\nThe average polarity is: {avg}\n".format(avg=polarity_avg))
-print("The average subjectivity is: {avg}\n".format(avg=subjectivity_avg))
+    sentiments = TextBlob(twt["text"]).sentiment
 
+    if sentiments.polarity > 0.2:
+        pos_tweets += twt["text"]
+    elif sentiments.polarity < -0.2:
+        neg_tweets += twt["text"]
+    else:
+        neut_tweets += twt["text"]
+
+    # Part One:
+    # polarity_list.append(twt_tb.sentiment.polarity)
+    # polarity_total += twt_tb.sentiment.polarity
+    # subjectivity_list.append(twt_tb.sentiment.subjectivity)
+    # subjectivity_total += twt_tb.sentiment.subjectivity
+
+# Part One:
+# polarity_avg = polarity_total/len(polarity_list)
+# subjectivity_avg = subjectivity_total/len(subjectivity_list)
+
+# print("\nThe average polarity is: {avg}\n".format(avg=polarity_avg))
+# print("The average subjectivity is: {avg}\n".format(avg=subjectivity_avg))
+
+# Part Two:
 # Polarity Histogram
 # plt.hist(polarity_list, bins=[-1, -0.5, 0.0, 0.5, 1])
 # plt.xlabel("Polarities")
@@ -61,19 +85,41 @@ print("The average subjectivity is: {avg}\n".format(avg=subjectivity_avg))
 #
 # plt.show()
 
-tweets_blob = TextBlob(tweets_string)
-word_count = tweets_blob.word_counts
-common_words = ["and", "about", "the", "http"]
-filtered_words = {}
+# Part Three:
+# tweets_blob = TextBlob(tweets_string)
 
-for word in word_count:
-    if word.isalpha() and word not in common_words:
-        if word.lower() in filtered_words:
-            filtered_words[word.lower()] += 1
-        else:
-            filtered_words[word.lower()] = 1
+common_words = ["and", "about", "the", "http", "automation"]
 
-wordcloud = WordCloud().generate_from_frequencies(filtered_words)
-plt.imshow(wordcloud, interpolation="bilinear")
-plt.axis("off")
+
+def get_filtered_dictionary(blob):
+    filtered_words = {}
+    word_count = blob.word_counts
+    for word in word_count:
+        if word.isalpha() and word.lower() not in common_words:
+            if word.lower() in filtered_words:
+                filtered_words[word.lower()] += 1
+            else:
+                filtered_words[word.lower()] = 1
+
+    return filtered_words
+
+def create_figure(dict, plotnum, title):
+    wordcloud = WordCloud().generate_from_frequencies(dict)
+    plt.subplot(plotnum)
+    plt.imshow(wordcloud, interpolation="bilinear")
+    plt.title(title)
+    plt.axis("off")
+
+plt.figure(1)
+
+create_figure(get_filtered_dictionary(TextBlob(pos_tweets)), 131, "Positive Tweets")
+create_figure(get_filtered_dictionary(TextBlob(neg_tweets)), 132, "Negative Tweets")
+create_figure(get_filtered_dictionary(TextBlob(neut_tweets)), 133, "Neutral Tweets")
+
+# Part Three:
+# wordcloud = WordCloud().generate_from_frequencies(filtered_words)
+# plt.imshow(wordcloud, interpolation="bilinear")
+# plt.axis("off")
+# plt.show()
+
 plt.show()
