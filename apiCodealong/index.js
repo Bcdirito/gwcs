@@ -1,6 +1,7 @@
 window.addEventListener("DOMContentLoaded", function(){
   let currentLocation = ol.proj.fromLonLat([-74.028106, 40.738729])
   const homeLocation = ol.proj.fromLonLat([-74.028106, 40.738729])
+  const buttons = document.getElementsByClassName('buttons')[0]
 
   let view = new ol.View({
     center: currentLocation,
@@ -18,12 +19,10 @@ window.addEventListener("DOMContentLoaded", function(){
     view: view
   })
 
-  const buttons = document.getElementsByClassName('buttons')[0]
-
   buttons.addEventListener("click", function(e) {
     if (e.target.name === "panHomeButton"){
       animateToLocation(homeLocation)
-    } else {
+    } else if (e.target.name === "panToNewLocationButton") {
       panToNewLocation()
     }
   })
@@ -34,10 +33,14 @@ window.addEventListener("DOMContentLoaded", function(){
     fetch(requestURL)
     .then(res => res.json())
     .then(json => {
-      let results = json[0]
-      currentLocation = ol.proj.fromLonLat([results["latlng"][1], results["latlng"][0]])
-      animateToLocation(currentLocation)
+      if (json.length) getLongLat(json[0])
+      else alert("Sorry, I couldn't find that!")
     })
+  }
+
+  function getLongLat(results){
+    currentLocation = ol.proj.fromLonLat([results["latlng"][1], results["latlng"][0]])
+    animateToLocation(currentLocation)
   }
 
   function animateToLocation(loc){
@@ -46,6 +49,4 @@ window.addEventListener("DOMContentLoaded", function(){
       duration: 2000
     })
   }
-  // console.log("Map: ", map)
-  // console.log("View: ", view)
 })
