@@ -2,9 +2,7 @@ import json
 
 # Creates the dictionary to store responses.
 leave = {"status": False}
-survey_json = open("./survey_data.json", "r+")
-all_answers = json.load(survey_json)
-survey_json.close()
+all_answers = []
 
 '''
 Below, write code that will pose the survey questions from the student prompt
@@ -21,9 +19,6 @@ def survey_loop():
         choice_path(choice)
 
     else:
-        with open("./survey_data.json", "w") as f:
-                json.dump(all_answers, f)
-
         print("Bye! See ya next time!\n")
 
 # Print the context of the dictionary.
@@ -54,7 +49,13 @@ def take_survey():
         "dream_job": dream_job
     }
 
-    all_answers.append(answers)
+    save_response = input("\nWould you like to save this to the database? Please input 'yes' or 'no': ").lower()
+    while save_response != "yes" and save_response != "no":
+        print("\nI didn't quite get that!")
+        save_response = input("\nWould you like to save this to the database? Please input 'yes' or 'no': ").lower()
+    else:
+        if save_response == "yes":
+            all_answers.append(answers)
 
 def display_answers_path():
     print("Would you like to display your answers or see all answers: ")
@@ -63,7 +64,7 @@ def display_answers_path():
     if choice == "my":
         find_my_answers()
     elif choice == "all":
-        display_all_answers()
+        display_all_answers(all_answers)
     else:
         print("\nI didn't quite understand that. Please try again!")
 
@@ -80,10 +81,8 @@ def display_my_answers(user):
     print("\nYou can always binge {show}".format(show=user["tv"]))
     print("\nIf you could be anything, you'd be a {job}".format(job=user["dream_job"]))
 
-def display_all_answers():
-    jsonFile = open("./survey_data.json", "r")
-    all_info = json.load(jsonFile)
-    for dic in all_answers:
+def display_all_answers(answers):
+    for dic in answers:
         print("\n{name} said:".format(name=dic["name"]))
         display_my_answers(dic)
 

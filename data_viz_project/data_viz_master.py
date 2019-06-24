@@ -4,6 +4,7 @@ Tweets. This starter code loads the appropriate libraries and the Twitter data y
 need!
 '''
 
+
 import json
 import matplotlib.pyplot as plt
 

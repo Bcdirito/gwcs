@@ -1,18 +1,22 @@
 import random
 
-# A list of words that
+# A list of words that will be guessed
 potential_words = ["example", "words", "someone", "can", "guess"]
 
+# .choice() Will choose a random index from the potential_words list
 word = random.choice(potential_words)
 
 # Use to test your code:
 # print(word)
 
 # Converts the word to lowercase
+# We want to do this because it will help to keep the game from breaking and make it more accurate with what the player guesses.
 word = word.lower()
+
 
 # Make it a list of letters for someone to guess
 current_word = ["_", "_"]
+
 for char in word:
 	current_word.append("_")
 
