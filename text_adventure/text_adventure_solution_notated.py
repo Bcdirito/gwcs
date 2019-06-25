@@ -39,6 +39,7 @@ if user_input == "left":
     else:
         print("\nYou decide to leave the root as is. You continue onward and find an exit! Congrats! You've made it to the Mad Hatter's Tea Party! Enjoy a very merry un-birthday!\n")
 else:
+    # All of the code below here follows the same logic and syntax as the code above.
     print("\nUpon heading down the path to your right, you come across a potion that says...")
 
     print("\n'Drink Me'\n")
