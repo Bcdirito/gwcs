@@ -19,9 +19,9 @@ window.addEventListener("DOMContentLoaded", function() {
 
   buttons[0].addEventListener("click", function(e){
     if (e.target.innerHTML === "About Me") e.target.innerText = "Hide"
-    else e.target.innerHTML = "About Me"
+    else if (e.target.innerHTML === "Hide") e.target.innerHTML = "About Me"
 
-    if (body.className === "bodyContent") body.className = "bodyContentClicked"
+    if (body.className === "bodyContent" && e.target.innerHTML !== "Next Photo") body.className = "bodyContentClicked"
     else body.className = "bodyContent"
   })
 
