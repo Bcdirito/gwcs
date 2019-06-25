@@ -54,4 +54,19 @@ def obamicon(img):
     new_image.putdata(new_pixels)
     return new_image
 
-show_img(obamicon())
+def grayscale(img):
+    pixels = img.getdata()
+    new_pixels = []
+
+    for p in pixels:
+        gray_p = get_average(p)
+        new_pixels.append(gray_p)
+
+    new_image = Image.new("RGB", img.size)
+    new_image.putdata(new_pixels)
+
+    return new_image
+
+def get_average(pixels):
+    avg = (pixels[0] + pixels[1] + pixels[2]) // 3
+    return (avg, avg, avg)

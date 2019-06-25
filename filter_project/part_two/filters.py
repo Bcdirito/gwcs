@@ -53,5 +53,3 @@ def obamicon(img):
     new_image = Image.new("RGB", img.size)
     new_image.putdata(new_pixels)
     return new_image
-
-show_img(obamicon())
