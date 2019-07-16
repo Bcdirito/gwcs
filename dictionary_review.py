@@ -27,4 +27,10 @@ def add_id(names):
     pass
     # how do i create a new key/value pair?
 
+# write a function that concats each name in the list to a local string and returns the string
+# hint: you're going to want to declare an empty string variable and use the += operator in your loop
+
+def add_names_to_string(names):
+    pass
+
 # call both functions
