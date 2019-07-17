@@ -4,13 +4,13 @@ test_list = [1, 2, 3, 4, 5]
 
 # use the following list of dictionaries to test the functions:
 
-test_dictionary_list = {
+test_dictionary_list = [
     {"name": "brian", "position": "teacher"},
     {"name": "edith", "position": "teacher"},
     {"name": "thomas", "position": "site lead"},
     {"name": "shine", "position": "partner"},
     {"name": "julie", "position": "partner"}
-}
+]
 
 # given a list of integers, find the average of the integers
 # return the value
