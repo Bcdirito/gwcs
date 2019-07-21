@@ -1,15 +1,15 @@
 window.addEventListener("DOMContentLoaded", function(){
-    let currentLocation = ol.proj.fromLonLat([-74.028106, 40.738729])
-    let homeLocation = ol.proj.fromLonLat([-74.028106, 40.738729])
-    let buttons = document.getElementsByClassName('buttons')[0]
+    var currentLocation = ol.proj.fromLonLat([-74.028106, 40.738729])
+    var homeLocation = ol.proj.fromLonLat([-74.028106, 40.738729])
+    var buttons = document.getElementsByClassName('buttons')[0]
 
     
-    let view = new ol.View({
+    var view = new ol.View({
       center: currentLocation,
       zoom: 8
     })
   
-    let map = new ol.Map({
+    var map = new ol.Map({
       target: 'map',
       layers: [
         new ol.layer.Tile({
@@ -29,10 +29,10 @@ window.addEventListener("DOMContentLoaded", function(){
         // Discuss how we got this
         // Discuss why id vs class or name
         // Discuss why you have made it lowercase
-        let country = document.getElementById("countryName").value.toLowerCase()
+        var country = document.getElementById("countryName").value.toLowerCase()
 
         // Discuss why you made a variable vs. just putting it in a fetch request
-        let requestURL = `https://restcountries.eu/rest/v2/name/${country}`
+        var requestURL = `https://restcountries.eu/rest/v2/name/${country}`
 
         // Discuss the process of a fetch request
         // Discuss why fetch vs. XML
