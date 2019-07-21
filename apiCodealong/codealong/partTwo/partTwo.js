@@ -9,7 +9,8 @@
 
 // Briefly explain event listeners and what this one means
 window.addEventListener("DOMContentLoaded", function(){
-    // Our actual current location
+    
+  // Our actual current location
     // Make sure coordinates are Longitute, Latitude
     var currentLocation = ol.proj.fromLonLat([-74.028106, 40.738729])
     

@@ -28,6 +28,7 @@ window.addEventListener("DOMContentLoaded", function(){
     function panToNewLocation(){
         // Discuss how we got this
         // Discuss why id vs class or name
+        // Discuss .value
         // Discuss why you have made it lowercase
         var country = document.getElementById("countryName").value.toLowerCase()
 
@@ -35,11 +36,11 @@ window.addEventListener("DOMContentLoaded", function(){
         var requestURL = `https://restcountries.eu/rest/v2/name/${country}`
 
         // Discuss the process of a fetch request
-        // Discuss why fetch vs. XML
         // Discuss asynch JS with .then()
         fetch(requestURL)
         .then(res => res.json())
         .then(json => {
+            // be sure to first console.log(json)
             if (json.length) getLongLat(json[0])
             else alert("Sorry, I couldn't find that!")
         })
