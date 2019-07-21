@@ -1,8 +1,9 @@
 window.addEventListener("DOMContentLoaded", function(){
     let currentLocation = ol.proj.fromLonLat([-74.028106, 40.738729])
-    const homeLocation = ol.proj.fromLonLat([-74.028106, 40.738729])
-    const buttons = document.getElementsByClassName('buttons')[0]
-  
+    let homeLocation = ol.proj.fromLonLat([-74.028106, 40.738729])
+    let buttons = document.getElementsByClassName('buttons')[0]
+
+    
     let view = new ol.View({
       center: currentLocation,
       zoom: 8
@@ -31,7 +32,7 @@ window.addEventListener("DOMContentLoaded", function(){
         let country = document.getElementById("countryName").value.toLowerCase()
 
         // Discuss why you made a variable vs. just putting it in a fetch request
-        const requestURL = `https://restcountries.eu/rest/v2/name/${country}`
+        let requestURL = `https://restcountries.eu/rest/v2/name/${country}`
 
         // Discuss the process of a fetch request
         // Discuss why fetch vs. XML
