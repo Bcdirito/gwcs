@@ -12,15 +12,15 @@ window.addEventListener("DOMContentLoaded", function(){
     
   // Our actual current location
     // Make sure coordinates are Longitute, Latitude
-    var currentLocation = ol.proj.fromLonLat([-74.028106, 40.738729])
+    let currentLocation = ol.proj.fromLonLat([-74.028106, 40.738729])
     
     // Follow example from docs
-    var view = new ol.View({
+    let view = new ol.View({
       center: currentLocation,
       zoom: 8 // Can be set to whatever, this was just a preference
     })
 
-    var map = new ol.Map({
+    let map = new ol.Map({
       target: 'map', // The name of the div where we will be placing the map
       layers: [
         new ol.layer.Tile({

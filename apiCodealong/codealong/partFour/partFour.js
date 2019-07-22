@@ -1,15 +1,16 @@
 window.addEventListener("DOMContentLoaded", function(){
-    var currentLocation = ol.proj.fromLonLat([-74.028106, 40.738729])
-    var homeLocation = ol.proj.fromLonLat([-74.028106, 40.738729])
-    var buttons = document.getElementsByClassName('buttons')[0]
+    let currentLocation = ol.proj.fromLonLat([-74.028106, 40.738729])
+    const homeLocation = ol.proj.fromLonLat([-74.028106, 40.738729])
+    const buttons = document.getElementsByClassName('buttons')[0]
 
+    console.log(buttons)
     
-    var view = new ol.View({
+    let view = new ol.View({
       center: currentLocation,
       zoom: 8
     })
   
-    var map = new ol.Map({
+    let map = new ol.Map({
       target: 'map',
       layers: [
         new ol.layer.Tile({
@@ -30,10 +31,10 @@ window.addEventListener("DOMContentLoaded", function(){
         // Discuss why id vs class or name
         // Discuss .value
         // Discuss why you have made it lowercase
-        var country = document.getElementById("countryName").value.toLowerCase()
+        let country = document.getElementById("countryName").value.toLowerCase()
 
         // Discuss why you made a variable vs. just putting it in a fetch request
-        var requestURL = `https://restcountries.eu/rest/v2/name/${country}`
+        let requestURL = `https://restcountries.eu/rest/v2/name/${country}`
 
         // Discuss the process of a fetch request
         // Discuss asynch JS with .then()

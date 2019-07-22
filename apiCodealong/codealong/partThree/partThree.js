@@ -1,17 +1,17 @@
 window.addEventListener("DOMContentLoaded", function(){
-    var currentLocation = ol.proj.fromLonLat([-74.028106, 40.738729])
+    let currentLocation = ol.proj.fromLonLat([-74.028106, 40.738729])
 
-    var homeLocation = ol.proj.fromLonLat([-74.028106, 40.738729])
+    const homeLocation = ol.proj.fromLonLat([-74.028106, 40.738729])
 
     // Explain query selector
-    var button = document.getElementsByClassName('button')[0]
+    const button = document.getElementsByClassName('button')[0]
     
-    var view = new ol.View({
+    let view = new ol.View({
         center: currentLocation,
         zoom: 8
     })
 
-    var map = new ol.Map({
+    let map = new ol.Map({
         target: 'map',
         layers: [
             new ol.layer.Tile({
