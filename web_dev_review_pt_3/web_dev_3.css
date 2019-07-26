@@ -1,21 +1,14 @@
 /* CSS Review */
-
-
 body {
     background-color: black;
     text-align: center;
 }
 
-/* How can we make the bodyContent div background white */
-
 #bodyContent {
     background-color: white;
+    margin-top: 7%
 }
 
-/* We want the biggest header to be red */
-/* The mid size blue */
-/* And the smallest yellow */
-/* How do we do that? */
 
 h1 {
     color: red;
@@ -36,5 +29,3 @@ span {
 #photoArea {
     width: 50%;
 }
-/* How can we adjust the image width 50% */
-/* How can we give the image a left margin of 25% */
