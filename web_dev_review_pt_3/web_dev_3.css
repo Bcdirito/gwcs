@@ -1,19 +1,40 @@
 /* CSS Review */
 
-/* How can we change the background color of the entire page in the following selector to black? */
-/* How can we add a Google Font for all of the text */
-/* How can we center all of our text */
 
-/* body {
-
-} */
+body {
+    background-color: black;
+    text-align: center;
+}
 
 /* How can we make the bodyContent div background white */
+
+#bodyContent {
+    background-color: white;
+}
 
 /* We want the biggest header to be red */
 /* The mid size blue */
 /* And the smallest yellow */
 /* How do we do that? */
 
+h1 {
+    color: red;
+}
+
+h3 {
+    color: blue;
+}
+
+h6 {
+    color: yellow;
+}
+
+span {
+    background-color: black;
+}
+
+#photoArea {
+    width: 50%;
+}
 /* How can we adjust the image width 50% */
 /* How can we give the image a left margin of 25% */
